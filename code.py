@@ -14,9 +14,15 @@ from random import *
 from turtle import *
 from freegames import path
 
+#Se crea un contador de celdas destapadas
+discovered = 0
 car = path('car.gif')
 writer = Turtle(visible=False) #llamada al metodo
-tiles = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','Ñ','!','?','+','-','&''A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','Ñ','!','?','+','-','&']
+writer.up() #Se levanta el escritor para que no cree lineas
+#Se ponen las letras que se van a usar
+tiles = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ñ', '!', '?', '+', '-', '&'] * 2
+#Se revuelven
+shuffle(tiles)
 state = {'mark': None}
 stateTaps = {'score': 0} #creacion del contador
 hide = [True] * 64
@@ -43,7 +49,6 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
-    clear()
     spot = index(x, y)
     mark = state['mark']
 
@@ -51,15 +56,15 @@ def tap(x, y):
         state['mark'] = spot
         stateTaps['score'] += 1 #suma de un tap al contador
     else:
+        global discovered
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        discovered += 2 #Se suman dos celdas destapadas
         stateTaps['score'] += 1 #suma de un tap al contador 
 
-    hideturtle()
-    tracer(False)
     writer.undo()
-    writer.write(stateTaps['score']) #actualizacion del contador de taps
+    writer.write('Taps: ' + str(stateTaps['score'])) #actualizacion del contador de taps
 
 def draw():
     "Draw image and tiles."
@@ -78,20 +83,27 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 12, y) #centrar la escritura de la letra
+        goto(x + 25, y) #va al centro de la celda
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], font=('Arial', 30, 'normal'), align= 'center') #se alinea el texto
 
+    #Se despliega un mensaje cuando todas las celdas hayan sido descubiertas
+    global discovered
+    if discovered == 64:
+        up()
+        goto(0, 30)
+        color('white')
+        write('Felicidades, ganaste', move=False, font=('Arial', 32, 'normal'), align='center')
+        goto(0, -30)
+        write('Cuadros destapados', move=False, font=('Arial', 32, 'normal'), align='center')
     update()
     ontimer(draw, 100)
 
 shuffle(tiles)
 setup(450, 470, 390, 0)
-hideturtle()
-tracer(False)
-writer.goto(200, 200) #coordenadas del contador de taps 
+writer.goto(150, 200) #coordenadas del contador de taps 
 writer.color('black') #color del contador de taps
-writer.write(stateTaps['score']) #despliegue
+writer.write('Taps: ' + str(stateTaps['score'])) #despliegue
 addshape(car)
 hideturtle()
 tracer(False)
