@@ -15,8 +15,10 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
+writer = Turtle(visible=False) #llamada al metodo
 tiles = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','Ñ','!','?','+','-','&''A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','Ñ','!','?','+','-','&']
 state = {'mark': None}
+stateTaps = {'score': 0} #creacion del contador
 hide = [True] * 64
 
 def square(x, y):
@@ -41,15 +43,23 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    clear()
     spot = index(x, y)
     mark = state['mark']
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+        stateTaps['score'] += 1 #suma de un tap al contador
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        stateTaps['score'] += 1 #suma de un tap al contador 
+
+    hideturtle()
+    tracer(False)
+    writer.undo()
+    writer.write(stateTaps['score']) #actualizacion del contador de taps
 
 def draw():
     "Draw image and tiles."
@@ -76,7 +86,12 @@ def draw():
     ontimer(draw, 100)
 
 shuffle(tiles)
-setup(420, 420, 370, 0)
+setup(450, 470, 390, 0)
+hideturtle()
+tracer(False)
+writer.goto(200, 200) #coordenadas del contador de taps 
+writer.color('black') #color del contador de taps
+writer.write(stateTaps['score']) #despliegue
 addshape(car)
 hideturtle()
 tracer(False)
