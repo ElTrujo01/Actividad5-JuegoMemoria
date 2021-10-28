@@ -78,7 +78,7 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 12, y) #centrar la escritura de la letra
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
