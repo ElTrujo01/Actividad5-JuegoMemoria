@@ -1,3 +1,15 @@
+# Por:  Jesus A. Trujillo de Anda   A00827538
+#       Jorge Avalos                A01720730
+#       Carlos Milano               A01383102
+#       Carlos Gaeta López          A01611248
+#       Alberto Guajardo            A00826548
+
+#Herramientas computacionales: el arte de la programación (Gpo 6)
+
+#Actividad 5. Juego de Memoria
+
+#ULTIMA FECHA DE MODIFICACION: Jueves, 28 de octubre de 2021
+
 from random import *
 from turtle import *
 from freegames import path
@@ -71,3 +83,7 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
+
+# 2021. Derechos reservados : Ninguna parte de esta obra puede ser reproducida o
+# transmitida, mediante ningún sistema o método, electrónico o mecánico, sin conocimiento por escrito 
+# de los autores. Tec de Monterrey.
