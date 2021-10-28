@@ -16,7 +16,9 @@ from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
+writer = Turtle(visible=False)
 state = {'mark': None}
+stateTaps = {'score': 0}
 hide = [True] * 64
 
 def square(x, y):
@@ -41,15 +43,23 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    hideturtle()
+    tracer(False)
+    writer.undo()
+    writer.write(stateTaps['score'])
+
+    clear()
     spot = index(x, y)
     mark = state['mark']
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+        stateTaps['score'] += 1
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        stateTaps['score'] += 1
 
 def draw():
     "Draw image and tiles."
@@ -76,7 +86,12 @@ def draw():
     ontimer(draw, 100)
 
 shuffle(tiles)
-setup(420, 420, 370, 0)
+setup(450, 470, 390, 0)
+hideturtle()
+tracer(False)
+writer.goto(200, 200)
+writer.color('black')
+writer.write(stateTaps['score'])
 addshape(car)
 hideturtle()
 tracer(False)
