@@ -92,7 +92,7 @@ def draw():
     if discovered == 64:
         up()
         goto(0, 30)
-        color('white')
+        color('black')
         write('Felicidades, ganaste', move=False, font=('Arial', 32, 'normal'), align='center')
         goto(0, -30)
         write('Cuadros destapados', move=False, font=('Arial', 32, 'normal'), align='center')
