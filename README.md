@@ -12,10 +12,10 @@ Para poder tomar como exitosa, la resolucion del presente caso sobre un programa
  1. Primero se analiza la totalidad del programa
  2. Se ejecuta el script
  3. Se asignaron las tareas de cada integrante, definiendo
-    Jesus se encarga del requerimiento 1, 
-    Gaeta satisface el requerimiento 2, 
-    El requerimiento 3 los resuelven todos, sin embargo, Jesus se encarga de hacer los commit y
-    Alberto cambiaria los numeros por letras y simbolos.
+    * Jesus se encarga del requerimiento 1
+    * Gaeta satisface el requerimiento 2
+    * El requerimiento 3 los resuelven todos, sin embargo, Jesus se encarga de hacer los commit
+    * Alberto cambiaria los numeros por letras y simbolos
  4. Posteriormente cada quien haria los cambios pertinentes en el programa, en el caso del contador de taps, los cambios se reflejaron en una rama, ya que se modifican variables globales que podrian afectar el funcionamiento del programa.
  5. Se comprueba el correcto funcionamiento de todas las nuevas caracteristicas del programa
  6. Se da cierre de actividades en el documento del presente trabajo
