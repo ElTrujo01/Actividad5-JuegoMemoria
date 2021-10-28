@@ -20,5 +20,8 @@ Para poder tomar como exitosa, la resolucion del presente caso sobre un programa
  5. Se comprueba el correcto funcionamiento de todas las nuevas caracteristicas del programa
  6. Se da cierre de actividades en el documento del presente trabajo
 
+## Consideraciones
+Se podran encontrar comentarios y justificaciones en cada uno de los commit realizados...
+
 ## Recursos
 Freegames. Memory. Retrieved from http://www.grantjenks.com/docs/freegames/memory.html (Links to an external site.) 
